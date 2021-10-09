@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/10/16 20:52:41.000.813,=C:\ProjetoGit\Unit1.pas</Transaction>
+    <Transaction>2020/10/16 20:53:15.000.994,C:\ProjetoGit\FAG.Frame.Produto.dfm=C:\ProjetoGit\Unit1.dfm</Transaction>
+    <Transaction>2020/10/16 20:53:15.000.994,C:\ProjetoGit\FAG.Frame.Produto.pas=C:\ProjetoGit\Unit1.pas</Transaction>
+    <Transaction>2020/10/19 14:05:09.000.958,=C:\ProjetoGit\Unit1.pas</Transaction>
+    <Transaction>2020/10/25 12:00:08.000.524,=C:\ProjetoGit\Unit1.pas</Transaction>
+    <Transaction>2020/10/25 12:07:30.000.636,C:\ProjetoGit\Unit1.pas=C:\ProjetoGit\RelatorioProduto.pas</Transaction>
+    <Transaction>2020/10/25 12:07:30.000.636,C:\ProjetoGit\Unit1.dfm=C:\ProjetoGit\RelatorioProduto.dfm</Transaction>
+    <Transaction>2020/10/25 12:32:55.000.724,C:\ProjetoGit\RelatorioProduto.dfm=C:\ProjetoGit\FAG.RelatorioProduto.dfm</Transaction>
+    <Transaction>2020/10/25 12:32:55.000.724,C:\ProjetoGit\RelatorioProduto.pas=C:\ProjetoGit\FAG.RelatorioProduto.pas</Transaction>
+    <Transaction>2020/10/25 15:20:43.000.335,=C:\ProjetoGit\Unit1.pas</Transaction>
+    <Transaction>2020/10/25 15:32:12.000.741,C:\ProjetoGit\Unit1.dfm=C:\ProjetoGit\FAG.RelatorioUsuario.dfm</Transaction>
+    <Transaction>2020/10/25 15:32:12.000.741,C:\ProjetoGit\Unit1.pas=C:\ProjetoGit\FAG.RelatorioUsuario.pas</Transaction>
+    <Transaction>2020/11/16 19:45:08.000.029,C:\ProjetoGit\FAG.DetalharMovimento.pas=</Transaction>
+    <Transaction>2020/11/16 19:46:23.000.391,=C:\ProjetoGit\FAG.DetalharMovimento.pas</Transaction>
+    <Transaction>2020/11/30 19:59:41.160,=C:\Users\mathe\Downloads\Projeto-master (1)\Projeto-master\FAG.ConsultaUsuario.pas</Transaction>
+  </Transactions>
+</BorlandProject>

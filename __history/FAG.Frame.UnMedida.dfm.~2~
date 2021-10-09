@@ -1,0 +1,39 @@
+object Frame_UnMedida: TFrame_UnMedida
+  Left = 0
+  Top = 0
+  Width = 299
+  Height = 59
+  TabOrder = 0
+  object Label_Titulo: TLabel
+    Left = 0
+    Top = -1
+    Width = 20
+    Height = 21
+    Caption = '%s'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object ComboBox_Informacao: TComboBox
+    Left = 0
+    Top = 23
+    Width = 288
+    Height = 21
+    TabOrder = 0
+    OnExit = ComboBox_InformacaoExit
+  end
+  object TableTemp: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 135
+    Top = 16
+  end
+end

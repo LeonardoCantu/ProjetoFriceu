@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/10/27 14:17:23.000.101,=C:\ProjetoIntegrador\Unit1.pas</Transaction>
+    <Transaction>2020/10/27 14:18:16.000.812,C:\ProjetoIntegrador\Unit1.pas=C:\ProjetoIntegrador\FAG.ConsultarProduto.pas</Transaction>
+    <Transaction>2020/10/27 14:18:16.000.812,C:\ProjetoIntegrador\Unit1.dfm=C:\ProjetoIntegrador\FAG.ConsultarProduto.dfm</Transaction>
+    <Transaction>2020/10/27 16:45:22.000.723,=C:\ProjetoIntegrador\FAG.RelatorioUsuario.pas</Transaction>
+    <Transaction>2020/10/27 16:45:22.000.661,=C:\ProjetoIntegrador\FAG.RelatorioProduto.pas</Transaction>
+    <Transaction>2020/10/28 21:44:06.000.466,=C:\ProjetoIntegrador\Unit1.pas</Transaction>
+    <Transaction>2020/10/28 21:45:35.000.366,C:\ProjetoIntegrador\Unit1.pas=C:\ProjetoIntegrador\FAG.Frame.UnMedida.pas</Transaction>
+    <Transaction>2020/10/28 21:45:35.000.366,C:\ProjetoIntegrador\Unit1.dfm=C:\ProjetoIntegrador\FAG.Frame.UnMedida.dfm</Transaction>
+    <Transaction>2020/10/30 20:14:08.000.953,=C:\ProjetoIntegrador\Unit1.pas</Transaction>
+    <Transaction>2020/10/30 20:14:24.000.239,C:\ProjetoIntegrador\FAG.Utils.pas=C:\ProjetoIntegrador\Unit1.pas</Transaction>
+    <Transaction>2020/11/01 21:30:27.000.906,=C:\lalapow\Unit1.pas</Transaction>
+    <Transaction>2020/11/01 21:30:57.000.810,=C:\lalapow\FAG.CadastroUsuario.pas</Transaction>
+    <Transaction>2020/11/03 14:17:41.202,C:\ProjetoIntegrador\FAG.Frame.UnMedida.pas=</Transaction>
+    <Transaction>2020/11/03 14:19:07.172,=C:\ProjetoIntegrador\FAG.Frame.UnMedida.pas</Transaction>
+    <Transaction>2020/11/03 14:19:40.252,C:\ProjetoIntegrador\FAG.Frame.UnMedida.pas=</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="C:"/>
+    <File Path="C:\libmysql.dll"/>
+    <File Path="FAG.CadastroCategoria.pas"/>
+    <File Path="FAG.CadastroCategoria.dfm"/>
+    <File Path="FAG.CadastroProduto.pas"/>
+    <File Path="FAG.CadastroProduto.dfm"/>
+    <File Path="FAG.CadastroUnMedida.pas"/>
+    <File Path="FAG.CadastroUnMedida.dfm"/>
+    <File Path="FAG.ConsultarProduto.pas"/>
+    <File Path="FAG.ConsultarProduto.dfm"/>
+    <File Path="FAG.DataModule.Conexao.pas"/>
+    <File Path="FAG.DataModule.Conexao.dfm"/>
+    <File Path="FAG.DetalharMovimento.pas"/>
+    <File Path="FAG.DetalharMovimento.dfm"/>
+    <File Path="FAG.Frame.Generico.pas"/>
+    <File Path="FAG.Frame.Generico.dfm"/>
+    <File Path="FAG.Frame.Produto.pas"/>
+    <File Path="FAG.Frame.Produto.dfm"/>
+    <File Path="FAG.Login.pas"/>
+    <File Path="FAG.Login.dfm"/>
+    <File Path="FAG.Menu.pas"/>
+    <File Path="FAG.Menu.dfm"/>
+    <File Path="FAG.Movimento.pas"/>
+    <File Path="FAG.Movimento.dfm"/>
+    <File Path="FAG.Produtos.pas"/>
+    <File Path="FAG.Produtos.dfm"/>
+    <File Path="FAG.RelatorioMovimento.pas"/>
+    <File Path="FAG.RelatorioMovimento.dfm"/>
+    <File Path="FAG.RelatorioProduto.pas"/>
+    <File Path="FAG.RelatorioProduto.dfm"/>
+    <File Path="FAG.RelatorioUsuario.pas"/>
+    <File Path="FAG.RelatorioUsuario.dfm"/>
+    <File Path="FAG.CadastroUsuario.pas"/>
+    <File Path="FAG.CadastroUsuario.dfm"/>
+    <File Path="FAG.Utils.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>

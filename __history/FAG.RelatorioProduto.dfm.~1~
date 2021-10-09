@@ -1,0 +1,26 @@
+object Form_RelatorioProduto: TForm_RelatorioProduto
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Relatorio de Produtos'
+  ClientHeight = 602
+  ClientWidth = 869
+  Color = clBtnFace
+  Constraints.MaxHeight = 633
+  Constraints.MaxWidth = 875
+  Constraints.MinHeight = 633
+  Constraints.MinWidth = 875
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  PopupMode = pmExplicit
+  Position = poOwnerFormCenter
+  Visible = True
+  PixelsPerInch = 96
+  TextHeight = 21
+end

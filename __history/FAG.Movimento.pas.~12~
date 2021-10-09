@@ -1,0 +1,192 @@
+unit FAG.Movimento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TForm_Movimento = class(TForm)
+    GroupBox1: TGroupBox;
+    Panel1: TPanel;
+    Label_codigo: TLabel;
+    Edit_codigo: TEdit;
+    ComboBox_tipoMovimento: TComboBox;
+    Label1: TLabel;
+    Label_data: TLabel;
+    DateTimePicker1: TDateTimePicker;
+    SpeedButton_salvar: TSpeedButton;
+    SpeedButton_cancelar: TSpeedButton;
+    SpeedButton_sair: TSpeedButton;
+    Label_tituloForm: TLabel;
+    Panel2: TPanel;
+    DBGrid1: TDBGrid;
+    Table_Itens: TFDMemTable;
+    ds_Itens: TDataSource;
+    Table_Itensprod_id_produto: TIntegerField;
+    Table_Itenspro_desc: TStringField;
+    Table_Itensun_medida_sigla: TStringField;
+    GroupBox2: TGroupBox;
+    Panel3: TPanel;
+    SpeedButton_Adicionar: TSpeedButton;
+    SpeedButton_remover: TSpeedButton;
+    Panel4: TPanel;
+    Label2: TLabel;
+    Image1: TImage;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label4: TLabel;
+    Edit_codigoProduto: TEdit;
+    Edit_descricao: TEdit;
+    Edit_categoria: TEdit;
+    Edit_quantidade: TEdit;
+    Table_Itensquantidade: TFloatField;
+    Table_Itenssaldo: TFloatField;
+    Table_Itensmov_valor_produto: TFloatField;
+    FDMemTable1: TFDMemTable;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButton_removerClick(Sender: TObject);
+    procedure SpeedButton_AdicionarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton_salvarClick(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure SpeedButton_sairClick(Sender: TObject);
+  private
+    function addItem: Boolean;
+    function validaItem: Boolean;
+    function delItem: Boolean;
+    function saveLancamento: Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_Movimento: TForm_Movimento;
+
+implementation
+
+uses
+  FAG.DataModule.Conexao, FAG.Produtos;
+
+{$R *.dfm}
+
+function TForm_Movimento.addItem: Boolean;
+begin
+  if Table_Itens.Locate('prod_id_produto', Edit_codigoProduto.Text, []) then
+    Table_Itens.Edit
+  else
+    Table_Itens.Append;
+
+  Table_Itens.FieldByName('prod_id_produto').AsInteger := StrToInt(Edit_codigoProduto.Text);
+  Table_Itens.FieldByName('pro_desc').AsString := Edit_descricao.Text;
+  //Table_Itens.FieldByName('un_medida_sigla').AsString;
+  //Table_Itens.FieldByName('saldo').AsString := Table_Itens.Post;
+end;
+
+function TForm_Movimento.delItem: Boolean;
+begin
+  if Application.MessageBox('Atenção, deseja remover o item do grid?',
+    'Remoção do item', MB_ICONWARNING + MB_TASKMODAL + MB_YESNO) = ID_YES then
+  begin
+    Table_Itens.Delete;
+  end;
+end;
+
+procedure TForm_Movimento.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := CaFree;
+  Release;
+  Form_Movimento := nil;
+end;
+
+procedure TForm_Movimento.FormCreate(Sender: TObject);
+var
+  codigo: String;
+begin
+  Table_Itens.CreateDataSet;
+
+  DataModuleConexao.ExecSQL('SELECT MAX(mov_id)+1 FROM movimento', FDMemTable1);
+  codigo := FDMemTable1.FieldByName('MAX(mov_id)+1').AsString;
+  Edit_codigo.Text := codigo;
+
+  ComboBox_tipoMovimento.Items.Add('ENTRADA');
+  ComboBox_tipoMovimento.Items.Add('SAÍDA');
+  ComboBox_tipoMovimento.ItemIndex := 0;
+end;
+
+procedure TForm_Movimento.FormShow(Sender: TObject);
+begin
+
+  Edit_codigo.Enabled := False;
+  Edit_descricao.Enabled := False;
+  Edit_categoria.Enabled := False;
+
+end;
+
+procedure TForm_Movimento.Image1Click(Sender: TObject);
+begin
+  try
+    Form_Produtos := TForm_Produtos.Create(nil);
+    Form_Produtos.ShowModal;
+  finally
+    Form_Produtos.Release;
+  end;
+end;
+
+  function TForm_Movimento.saveLancamento: Boolean;
+  var
+    sql: String;
+  begin
+    while not Table_Itens.Eof do
+    begin
+      sql := 'INSERT INTO Item_Movimento(pro_id_codigo) VALUES (' +
+        Table_Itens.FieldByName('pro_id_codigo').AsString + ')';
+      DataModuleConexao.ExecSQL(sql);
+      Table_Itens.Next;
+    end;
+  end;
+
+  procedure TForm_Movimento.SpeedButton_AdicionarClick(Sender: TObject);
+  begin
+    if validaItem then
+      addItem;
+  end;
+
+  procedure TForm_Movimento.SpeedButton_removerClick(Sender: TObject);
+  begin
+    delItem;
+  end;
+
+  procedure TForm_Movimento.SpeedButton_sairClick(Sender: TObject);
+begin
+  close;
+end;
+end;
+
+procedure TForm_Movimento.SpeedButton_salvarClick(Sender: TObject);
+  begin
+    saveLancamento;
+  end;
+
+  function TForm_Movimento.validaItem: Boolean;
+  begin
+    Result := False;
+    if Edit_codigoProduto.Text = EmptyStr then
+    begin
+      showmessage('Favor informar o item');
+      Edit_codigoProduto.SetFocus;
+    end
+    else
+    begin
+      Result := True;
+    end;
+  end;
+
+end.

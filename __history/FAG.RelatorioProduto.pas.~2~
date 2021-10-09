@@ -1,0 +1,39 @@
+unit FAG.RelatorioProduto;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FAG.Frame.Produto, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TForm_RelatorioProduto = class(TForm)
+    Panel_Principal: TPanel;
+    GroupBox1: TGroupBox;
+    Label_categoria: TLabel;
+    Label_tipoMoviemento: TLabel;
+    SpeedButton_filtrar: TSpeedButton;
+    ComboBox_categoria: TComboBox;
+    ComboBox_Status: TComboBox;
+    Label_tituloForm: TLabel;
+    Frame_Produto1: TFrame_Produto;
+    GroupBox_grid: TGroupBox;
+    Panel_grid: TPanel;
+    SpeedButton_exibirTodos: TSpeedButton;
+    SpeedButton_limparConsulta: TSpeedButton;
+    SpeedButton_exportar: TSpeedButton;
+    SpeedButton_sair: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_RelatorioProduto: TForm_RelatorioProduto;
+
+implementation
+
+{$R *.dfm}
+
+end.

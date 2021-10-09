@@ -1,0 +1,185 @@
+unit FAG.Menu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Buttons, Vcl.Menus, FAG.CadastroProduto,
+  FAG.RelatorioMovimento,
+  Vcl.ComCtrls;
+
+type
+  TForm_Menu = class(TForm)
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    Produto1: TMenuItem;
+    Usurio1: TMenuItem;
+    MovimentarEstoque1: TMenuItem;
+    ConsultareAlterar1: TMenuItem;
+    Movimentar1: TMenuItem;
+    Produto: TMenuItem;
+    Movimentao1: TMenuItem;
+    Usuario1: TMenuItem;
+    StatusBar1: TStatusBar;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Produto1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Movimentar1Click(Sender: TObject);
+    procedure Movimentao1Click(Sender: TObject);
+    procedure ProdutoClick(Sender: TObject);
+    procedure Usuario1Click(Sender: TObject);
+    procedure Usurio1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+
+  private
+  public
+    usuarioLogado: String;
+  protected
+    procedure CreateParams(var Params: TCreateParams); override;
+  end;
+
+var
+  Form_Menu: TForm_Menu;
+
+implementation
+
+{$R *.dfm}
+
+uses FAG.Login, FAG.DataModule.Conexao, FAG.Movimento, FAG.RelatorioProduto,
+  FAG.RelatorioUsuario,
+  FAG.CadastroUsuario;
+
+procedure TForm_Menu.Button1Click(Sender: TObject);
+begin
+
+  Application.CreateForm(TForm_CadastroProduto, Form_CadastroProduto);
+  Application.Run;
+  // Form_CadastroProduto := TForm_CadastroProduto.Create(Application);
+  // Form_CadastroProduto.Show;
+  ShowMessage('TESTE');
+
+end;
+
+procedure TForm_Menu.CreateParams(var Params: TCreateParams);
+begin
+  inherited;
+  Params.ExStyle := Params.ExStyle OR WS_EX_APPWINDOW;
+end;
+
+procedure TForm_Menu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Application.Terminate;
+end;
+
+procedure TForm_Menu.FormShow(Sender: TObject);
+begin
+  if not Assigned(Form_Login) then
+  begin
+    Form_Login := TForm_Login.Create(Self);
+  end;
+  while (Form_Login.ShowModal = mrOk) do
+  begin
+    FreeAndNil(Form_Login);
+    StatusBar1.Panels.Items[0].Text := 'Usuário: ' + Form_Menu.usuarioLogado;
+    Break;
+  end;
+  if Form_Login <> nil then
+    Application.Terminate;
+end;
+
+procedure TForm_Menu.Usuario1Click(Sender: TObject);
+begin
+  if not Assigned(Form_RelatorioUsuario) then
+  begin
+    Form_RelatorioUsuario := TForm_RelatorioUsuario.Create(Application);
+  end;
+  Form_RelatorioUsuario.Position := poOwnerFormCenter;
+  Form_RelatorioUsuario.Show;
+end;
+
+procedure TForm_Menu.Usurio1Click(Sender: TObject);
+begin
+  if not Assigned(Form_CadastroUsuario) then
+  begin
+    Form_CadastroUsuario := TForm_CadastroUsuario.Create(Application);
+  end;
+  Form_CadastroUsuario.Position := poOwnerFormCenter;
+  Form_CadastroUsuario.Show;
+end;
+
+procedure TForm_Menu.ProdutoClick(Sender: TObject);
+begin
+  if not Assigned(Form_RelatorioProduto) then
+  begin
+    Form_RelatorioProduto := TForm_RelatorioProduto.Create(Application);
+  end;
+  Form_RelatorioProduto.Position := poOwnerFormCenter;
+  Form_RelatorioProduto.Show;
+end;
+
+procedure TForm_Menu.SpeedButton2Click(Sender: TObject);
+begin
+  if not Assigned(Form_CadastroUsuario) then
+  begin
+    Form_CadastroUsuario := TForm_CadastroUsuario.Create(Application);
+  end;
+  Form_CadastroUsuario.Position := poOwnerFormCenter;
+  Form_CadastroUsuario.Show;
+end;
+
+procedure TForm_Menu.SpeedButton3Click(Sender: TObject);
+begin
+  if not Assigned(Form_CadastroProduto) then
+  begin
+    Form_CadastroProduto := TForm_CadastroProduto.Create(Application);
+    Form_CadastroProduto.BorderStyle := bsNone;
+  end;
+  Form_CadastroProduto.Position := poOwnerFormCenter;
+  Form_CadastroProduto.Show;
+end;
+
+procedure TForm_Menu.Movimentao1Click(Sender: TObject);
+begin
+  if not Assigned(Form_RelatorioMovimento) then
+  begin
+    Form_RelatorioMovimento := TForm_RelatorioMovimento.Create(Application);
+  end;
+  Form_RelatorioMovimento.Position := poOwnerFormCenter;
+  Form_RelatorioMovimento.Show;
+end;
+
+procedure TForm_Menu.Movimentar1Click(Sender: TObject);
+begin
+  if not Assigned(Form_Movimento) then
+  begin
+    Form_Movimento := TForm_Movimento.Create(Application);
+    Form_Movimento.BorderStyle := bsNone;
+    Form_Movimento.Position := poOwnerFormCenter;
+  end;
+  Form_Movimento.Position := poOwnerFormCenter;
+  Form_Movimento.Show;
+end;
+
+procedure TForm_Menu.Produto1Click(Sender: TObject);
+begin
+  if not Assigned(Form_CadastroProduto) then
+  begin
+    Form_CadastroProduto := TForm_CadastroProduto.Create(Application);
+    Form_CadastroProduto.BorderStyle := bsNone;
+  end;
+  Form_CadastroProduto.Position := poOwnerFormCenter;
+  Form_CadastroProduto.Show;
+end;
+
+end.

@@ -1,0 +1,34 @@
+program Integrador;
+
+{$R *.dres}
+
+uses
+  Vcl.Forms,
+  FAG.Login in 'FAG.Login.pas' {Form_Login},
+  FAG.DataModule.Conexao in 'FAG.DataModule.Conexao.pas' {DataModuleConexao: TDataModule},
+  FAG.Menu in 'FAG.Menu.pas' {Form_Menu},
+  FAG.CadastroProduto in 'FAG.CadastroProduto.pas' {Form_CadastroProduto},
+  FAG.CadastroUnMedida in 'FAG.CadastroUnMedida.pas' {Form_CadastroUnMedida},
+  FAG.Frame.Generico in 'FAG.Frame.Generico.pas' {Frame_Generico: TFrame},
+  FAG.CadastroCategoria in 'FAG.CadastroCategoria.pas' {Form_CadastroCategoria},
+  FAG.Movimento in 'FAG.Movimento.pas' {Form_Movimento},
+  FAG.Produtos in 'FAG.Produtos.pas' {Form_Produtos},
+  FAG.DetalharMovimento in 'FAG.DetalharMovimento.pas' {Form_detalharMovimento},
+  FAG.RelatorioMovimento in 'FAG.RelatorioMovimento.pas' {Form_RelatorioMovimento},
+  FAG.Frame.Produto in 'FAG.Frame.Produto.pas' {Frame_Produto: TFrame},
+  FAG.ConsultarProduto in 'FAG.ConsultarProduto.pas' {Form_ConsultarProduto},
+  FAG.RelatorioProduto in 'FAG.RelatorioProduto.pas' {Form_RelatorioProduto},
+  FAG.RelatorioUsuario in 'FAG.RelatorioUsuario.pas' {Form_RelatorioUsuario};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDataModuleConexao, DataModuleConexao);
+  Application.CreateForm(TForm_Menu, Form_Menu);
+  Application.CreateForm(TForm_ConsultarProduto, Form_ConsultarProduto);
+  Application.CreateForm(TForm_RelatorioProduto, Form_RelatorioProduto);
+  Application.CreateForm(TForm_RelatorioUsuario, Form_RelatorioUsuario);
+  Application.Run;
+end.

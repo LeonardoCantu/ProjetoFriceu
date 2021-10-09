@@ -1,0 +1,45 @@
+unit FAG.RelatorioUsuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TForm_RelatorioUsuario = class(TForm)
+    Panel_Principal: TPanel;
+    Label_tituloForm: TLabel;
+    SpeedButton_exibirTodos: TSpeedButton;
+    SpeedButton_limparConsulta: TSpeedButton;
+    SpeedButton_exportar: TSpeedButton;
+    SpeedButton_sair: TSpeedButton;
+    GroupBox_consulta: TGroupBox;
+    Label_status: TLabel;
+    SpeedButton_filtrar: TSpeedButton;
+    ComboBox_Status: TComboBox;
+    GroupBox_grid: TGroupBox;
+    Panel_grid: TPanel;
+    DBGrid_Pesquisa: TDBGrid;
+    DataSource_Consulta: TDataSource;
+    FDMemTable_Consulta: TFDMemTable;
+    ComboBox_filtro: TComboBox;
+    Label_filtro: TLabel;
+    Edit_Pesquisa: TEdit;
+    Label_pesquisa: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_RelatorioUsuario: TForm_RelatorioUsuario;
+
+implementation
+
+{$R *.dfm}
+
+end.
